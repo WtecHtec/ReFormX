@@ -1,3 +1,4 @@
+import * as React from 'react';
 import {  Form, Input, Spin } from "antd";
 import { DynamicFormItemProps } from "../../types/props";
 import TypeItems from "./TypeItems";

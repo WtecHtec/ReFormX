@@ -1,7 +1,7 @@
 import typescript from 'rollup-plugin-typescript2';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
-import terser from '@rollup/plugin-terser';  // 注意这里的导入方式改变了
+import terser from '@rollup/plugin-terser';
 import { createRequire } from 'module';
 
 const require = createRequire(import.meta.url);
@@ -13,26 +13,40 @@ export default {
     {
       file: pkg.main,
       format: 'cjs',
+      sourcemap: true,
+      exports: 'named',
+      globals: {
+        react: 'React',
+        'react-dom': 'ReactDOM',
+        antd: 'antd'
+      }
     },
     {
       file: pkg.module,
       format: 'es',
-    },
+      sourcemap: true,
+      exports: 'named',
+      globals: {
+        react: 'React',
+        'react-dom': 'ReactDOM',
+        antd: 'antd'
+      }
+    }
   ],
-  external: [...Object.keys(pkg.peerDependencies || {})],
+  external: ['react', 'react-dom', 'antd'],
   plugins: [
     typescript({
       tsconfig: './tsconfig.json',
+      useTsconfigDeclarationDir: true,
+      clean: true
     }),
-    resolve(),
-    commonjs(),
-    terser({
-      format: {
-        comments: false
-      },
-      compress: {
-        drop_console: true
-      }
-    })
+    resolve({
+      extensions: ['.ts', '.tsx']
+    }),
+    commonjs({
+      include: /node_modules/,
+      requireReturnsDefault: 'auto'
+    }),
+    terser()
   ]
 };
