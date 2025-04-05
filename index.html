@@ -1,13 +1,173 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
-  </head>
-  <body>
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ReFormX - 强大的动态表单解决方案</title>
+
+   <!-- SEO meta tags -->
+   <meta name="description" content="ReFormX 是基于 React 和 Ant Design 的现代化表单解决方案，提供强大的动态表单生成功能，支持多种布局、表单联动、异步数据处理等特性。">
+   <meta name="keywords" content="ReFormX,React,Ant Design,动态表单,表单生成器,表单解决方案">
+   <meta name="author" content="ReFormX Team">
+   <meta name="robots" content="index, follow">
+   
+   <!-- Open Graph / Social Media Meta Tags -->
+   <meta property="og:title" content="ReFormX - 强大的动态表单解决方案">
+   <meta property="og:description" content="基于 React 和 Ant Design 的现代化表单解决方案，让表单配置变得简单而强大">
+   <meta property="og:type" content="website">
+   <meta property="og:url" content="https://reformx.dev">
+   <meta property="og:image" content="https://reformx.dev/og-image.jpg">
+   
+   <!-- Twitter Card Meta Tags -->
+   <meta name="twitter:card" content="summary_large_image">
+   <meta name="twitter:title" content="ReFormX - 强大的动态表单解决方案">
+   <meta name="twitter:description" content="基于 React 和 Ant Design 的现代化表单解决方案，让表单配置变得简单而强大">
+   <meta name="twitter:image" content="https://reformx.dev/twitter-image.jpg">
+   
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.5.95/css/materialdesignicons.min.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0066FF',
+            secondary: '#6B7280',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-200">
+  <!-- 导航栏 -->
+  <nav
+    class="fixed top-0 w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm z-50 border-b border-gray-200 dark:border-gray-800">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center space-x-4">
+        <h1 class="text-2xl font-bold text-primary">ReFormX</h1>
+      </div>
+      <a href="https://github.com/wtechtec/ReFormX" class="text-gray-600 dark:text-gray-400 hover:text-primary">
+        <i class="mdi mdi-github text-xl"></i>
+      </a>
+    </div>
+  </nav>
+
+  <!-- 主要内容 -->
+  <main class="container mx-auto px-4 pt-24 pb-12">
+    <!-- 介绍部分 -->
+    <section class="mb-16 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">ReFormX 动态表单生成器</h1>
+      <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+        基于 React 和 Ant Design 的现代化表单解决方案，让表单配置变得简单而强大
+      </p>
+    </section>
+
+    <!-- 功能展示 -->
+    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+      <!-- 基础表单 -->
+      <div class="p-6 rounded-xl border border-gray-200 dark:border-gray-800 hover:shadow-lg transition-shadow">
+        <i class="mdi mdi-form-select text-3xl text-primary mb-4"></i>
+        <h3 class="text-xl font-semibold mb-2">常用表单组件</h3>
+        <p class="text-gray-600 dark:text-gray-400">支持输入框、选择器、日期选择等多种常用表单组件</p>
+      </div>
+
+      <!-- 布局选项 -->
+      <div class="p-6 rounded-xl border border-gray-200 dark:border-gray-800 hover:shadow-lg transition-shadow">
+        <i class="mdi mdi-view-grid-plus text-3xl text-primary mb-4"></i>
+        <h3 class="text-xl font-semibold mb-2">灵活布局</h3>
+        <p class="text-gray-600 dark:text-gray-400">支持行内、网格、标签页、折叠面板等多种布局方式</p>
+      </div>
+
+      <!-- 表单联动 -->
+      <div class="p-6 rounded-xl border border-gray-200 dark:border-gray-800 hover:shadow-lg transition-shadow">
+        <i class="mdi mdi-link-variant text-3xl text-primary mb-4"></i>
+        <h3 class="text-xl font-semibold mb-2">表单联动</h3>
+        <p class="text-gray-600 dark:text-gray-400">强大的表单项联动功能，支持复杂的业务逻辑</p>
+      </div>
+
+      <!-- 异步数据 -->
+      <div class="p-6 rounded-xl border border-gray-200 dark:border-gray-800 hover:shadow-lg transition-shadow">
+        <i class="mdi mdi-cloud-sync text-3xl text-primary mb-4"></i>
+        <h3 class="text-xl font-semibold mb-2">异步数据处理</h3>
+        <p class="text-gray-600 dark:text-gray-400">支持异步数据加载和处理，轻松对接后端接口</p>
+      </div>
+
+      <!-- 自定义类型 -->
+      <div class="p-6 rounded-xl border border-gray-200 dark:border-gray-800 hover:shadow-lg transition-shadow">
+        <i class="mdi mdi-puzzle text-3xl text-primary mb-4"></i>
+        <h3 class="text-xl font-semibold mb-2">自定义表单项</h3>
+        <p class="text-gray-600 dark:text-gray-400">支持自定义表单项类型，满足特殊业务需求</p>
+      </div>
+
+      <!-- 表单验证 -->
+      <div class="p-6 rounded-xl border border-gray-200 dark:border-gray-800 hover:shadow-lg transition-shadow">
+        <i class="mdi mdi-shield-check text-3xl text-primary mb-4"></i>
+        <h3 class="text-xl font-semibold mb-2">表单验证</h3>
+        <p class="text-gray-600 dark:text-gray-400">内置完善的表单验证机制，支持自定义验证规则</p>
+      </div>
+    </section>
+
+    <!-- 示例代码 -->
+    <section class="mb-16">
     <div id="root"></div>
     <script type="module" src="./example/main.tsx"></script>
-  </body>
+    </section>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="border-t border-gray-200 dark:border-gray-800">
+    <div class="container mx-auto px-4 py-8">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-4 md:mb-0">
+          <p class="text-gray-600 dark:text-gray-400">© 2024 ReFormX. All rights reserved.</p>
+        </div>
+        <div class="flex space-x-4">
+          <a href="https://github.com/wtechtec/ReFormX" class="text-gray-600 dark:text-gray-400 hover:text-primary">
+            <i class="mdi mdi-github text-xl"></i>
+          </a>
+          <a href="https://twitter.com/username" class="text-gray-600 dark:text-gray-400 hover:text-primary">
+            <i class="mdi mdi-twitter text-xl"></i>
+          </a>
+          <a href="https://linkedin.com/in/username" class="text-gray-600 dark:text-gray-400 hover:text-primary">
+            <i class="mdi mdi-linkedin text-xl"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // 深色模式切换
+    const themeToggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+
+    // 检查系统主题
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      html.classList.add('dark');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      html.classList.toggle('dark');
+    });
+
+    // 添加页面滚动动画
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('opacity-100', 'translate-y-0');
+        }
+      });
+    });
+
+    document.querySelectorAll('section > div').forEach((el) => {
+      el.classList.add('opacity-0', 'translate-y-4', 'transition-all', 'duration-500');
+      observer.observe(el);
+    });
+  </script>
+</body>
+
 </html>

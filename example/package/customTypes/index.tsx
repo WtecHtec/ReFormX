@@ -1,9 +1,9 @@
 
 import  formConfig  from "./config";
-import DynamicForm from "../../src/components/DynamicForm";
-import { stringifyConfig } from "../utils";
-import { DynamicFormItemProps } from "../../src/types/props";
-import ImageUpload from "./ImageUpload";
+import { DynamicForm } from "reformx"
+import { stringifyConfig } from "../../utils";
+import { DynamicFormItemProps } from "../../../src/types/props";
+import ImageUpload from "../../customTypes/ImageUpload";
 
 
 

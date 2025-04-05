@@ -40,6 +40,6 @@ export default function FetchByStateApp() {
         }
       })
     }}>刷新选择器</Button>
-    <DynamicForm config={formConfig} onSubmit={handleSubmit} extState={ state } />;
-  </div>;
+    <DynamicForm config={formConfig} onSubmit={handleSubmit} extState={ state } />
+  </div>
   }

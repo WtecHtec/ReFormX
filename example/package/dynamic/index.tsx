@@ -1,8 +1,8 @@
 import { formConfig } from "./config";
-import DynamicForm from "../../src/components/DynamicForm";
-import { stringifyConfig } from "../utils";
-
-export default function StepApp() {
+import { stringifyConfig } from "../../utils";
+import { DynamicForm } from "reformx"
+import React from "react";
+export default function DynamicApp() {
     return (
         <div>
             <div style={{ marginBottom: '20px' }}>
@@ -22,5 +22,5 @@ export default function StepApp() {
                 onSubmit={(values) => console.log("提交数据:", values)} 
             />
         </div>
-    )
+    );
 }

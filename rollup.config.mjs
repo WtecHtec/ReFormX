@@ -26,6 +26,13 @@ export default {
     }),
     resolve(),
     commonjs(),
-    terser(),
-  ],
+    terser({
+      format: {
+        comments: false
+      },
+      compress: {
+        drop_console: true
+      }
+    })
+  ]
 };

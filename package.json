@@ -1,6 +1,6 @@
 {
   "name": "reformx",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "type": "module",
   "description": "一个基于 React 和 Ant Design 的动态表单解决方案",
   "main": "dist/index.js",
@@ -32,8 +32,9 @@
   },
   "dependencies": {
     "antd": "^5.24.6",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react": "^17.0.0 || ^18.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0",
+    "reformx": "^0.0.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
@@ -52,5 +53,9 @@
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.24.1",
     "vite": "^6.2.0"
+  },
+  "peerDependencies": {
+    "react": "^17.0.0 || ^18.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0"
   }
 }

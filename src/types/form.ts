@@ -62,6 +62,7 @@ export interface FormGroupConfig {
     items: IFormItemConfig[];
     title?: string;
     tabs?: { title: string; items: IFormItemConfig[] }[];
+    extraProps?: Record<string, any>;
 }
 
 

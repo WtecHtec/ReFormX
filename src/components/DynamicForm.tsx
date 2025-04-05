@@ -146,7 +146,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ form: propForm, config, extSt
       return <Button onClick={() => {
         setCurrentStep((prev) => prev - 1);
         step?.onPrev?.({ form, extraState, updateState, optionsData, loadingFields, currentStep, forceUpdate });
-      }}>{step?.prevText || "上一步"}</Button>;
+      }}>{step?.prevText || "上一步"}</Button>
     }
     return null;
   };
@@ -187,7 +187,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ form: propForm, config, extSt
     }
     return <Button type="primary" htmlType="submit" style={{ marginLeft: 8 }}>
       {config.submitText || "提交"}
-    </Button>;
+    </Button>
   };
 
 
@@ -209,7 +209,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ form: propForm, config, extSt
         if (typeof formLayout[group.layout as TLayoutKey] === "function") {
           return formLayout[group.layout as TLayoutKey]({ groupIndex, group, formItem: { item: group, form, extraState, updateState, optionsData, loadingFields, currentStep, forceUpdate, customTypes } });
         }
-        return <>{group.items.map((item) => renderFormItem({ item, form, extraState, updateState, optionsData, loadingFields, currentStep, forceUpdate, customTypes }))}</>;
+        return <>{group.items.map((item) => renderFormItem({ item, form, extraState, updateState, optionsData, loadingFields, currentStep, forceUpdate, customTypes }))}</>
       })}
 
       {/* 步骤表单按钮 */}

@@ -24,6 +24,6 @@ export default function LinkageApp() {
             {stringifyConfig(formConfig)}
         </pre>
     </div> 
-    <DynamicForm config={formConfig} onSubmit={handleSubmit} />;
-  </div>;
+    <DynamicForm config={formConfig} onSubmit={handleSubmit} />
+  </div>
   }

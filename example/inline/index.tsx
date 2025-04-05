@@ -23,6 +23,6 @@ export default function InlineApp() {
             {stringifyConfig(formConfig)}
         </pre>
     </div> 
-    <DynamicForm config={formConfig} onSubmit={handleSubmit} />;
-  </div>;
+    <DynamicForm config={formConfig} onSubmit={handleSubmit} />
+  </div>
   }

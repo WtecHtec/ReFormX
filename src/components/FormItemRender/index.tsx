@@ -24,7 +24,7 @@ const renderFormItem = ({ item, loadingFields, optionsData, form, extraState, up
   }
 
   if (!renderNode) {
-    renderNode = <Input placeholder={item.placeholder} {...(item?.extraProps || {})} />;
+    renderNode = <Input placeholder={item.placeholder} {...(item?.extraProps || {})} />
     return null;
   }
 
@@ -33,7 +33,7 @@ const renderFormItem = ({ item, loadingFields, optionsData, form, extraState, up
       renderNode && formItem ? ( <Form.Item key={ item.name } label={ item.label } name={ item.name } rules={ item.rules }  dependencies={ item?.dependencies || []} {...(item?.extraFormItemProps || {})}>
       {(() => {
         if (loadingFields[item.name]) {
-          return <Spin />;
+          return <Spin />
         }
         return renderNode;
       })()

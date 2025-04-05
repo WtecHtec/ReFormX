@@ -1,8 +1,9 @@
 import { formConfig } from "./config";
-import DynamicForm from "../../src/components/DynamicForm";
-import { stringifyConfig } from "../utils";
+import { stringifyConfig } from "../../utils";
+import { DynamicForm } from "reformx"
+import React from "react";
 
-export default function StepApp() {
+export default function AsyncApp() {
     return (
         <div>
             <div style={{ marginBottom: '20px' }}>
