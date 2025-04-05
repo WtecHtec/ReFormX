@@ -1,6 +1,6 @@
 {
   "name": "reformx",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "type": "module",
   "description": "一个基于 React 和 Ant Design 的动态表单解决方案",
   "main": "dist/index.js",

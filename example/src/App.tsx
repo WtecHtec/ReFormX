@@ -15,6 +15,9 @@ import AsyncApp from './package/async';
 import StepApp from './package/step';
 import RulesApp from './package/rules';
 import DynamicApp from './package/dynamic';
+import MutLinkageApp from './package/mutlinkage';
+import DiyApp from './package/diy';
+import InitialValuesApp from './package/initialValue';
 export default function App() {
   const [currentDemo, setCurrentDemo] = useState('formItems');
 
@@ -31,7 +34,11 @@ export default function App() {
     customTypesApp: { title: '自定义表单项', component: <CustomTypesApp />  },
     rules: { title: '表单校验', component: <RulesApp /> },
   dynamic: { title: '动态表单', component: <DynamicApp /> },
+  mutLinkageApp: { title: '动态联动表单', component: <MutLinkageApp /> },
+    diyApp: { title: '自定义渲染', component: <DiyApp /> },
+    initialValuesApp: { title: '初始值', component: <InitialValuesApp /> },
 
+    
     grid: { title: '网格布局', component: <GridApp /> },
     tabs: { title: '标签页布局', component: <TabsApp /> },
     collapse: { title: '折叠面板', component: <CollapseApp /> },

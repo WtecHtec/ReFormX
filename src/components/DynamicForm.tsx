@@ -10,7 +10,8 @@ import { IFormItemConfig } from "../types/form";
 const { Step } = Steps;
 
 
-const DynamicForm: React.FC<DynamicFormProps> = ({ form: propForm, config, extState, onSubmit, customTypes , footterStyle, initialValues, renderSubmit, isReset}) => {
+const DynamicForm: React.FC<DynamicFormProps> = (props) => {
+  const { form: propForm, config, extState, onSubmit, customTypes , footterStyle, initialValues, renderSubmit, isReset} = props || {};
   let [form] = Form.useForm();
   form = propForm || form;
   
@@ -193,7 +194,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({ form: propForm, config, extSt
 
 
   return (
-    <Form form={form} layout="vertical" onFinish={onSubmit} onValuesChange={handleValuesChange}>
+    <Form form={form} layout="vertical" onFinish={(values) => onSubmit?.(values, { form, extraState, updateState, forceUpdate})} onValuesChange={handleValuesChange}>
       {/* 渲染步骤条 */}
       {config.groups.some((g) => g.layout === "step") && (
         <Steps current={currentStep}>

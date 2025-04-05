@@ -10,7 +10,7 @@ export interface DynamicFormProps {
     form?: FormInstance; // antd form 实例
     config: IFormConfig; // 表单项配置
     extState?: Record<string, any>; // 额外状态存储
-    onSubmit?: (values: Record<string, any>) => void; // 
+    onSubmit?: (values: Record<string, any>, data:  Record<string, any>) => void; // 
     renderSubmit?: TRenderNode; // 自定义提交区域
     customTypes?: Record<string, ICustomType>; // 自定义表单项
     footterStyle?: React.CSSProperties; // 自定义表单项
