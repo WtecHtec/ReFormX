@@ -1,54 +1,183 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# ReFormX
 
-Currently, two official plugins are available:
+ReFormX 是一个基于 React 和 Ant Design 的动态表单解决方案，通过简单的配置即可生成功能强大的表单。
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 特性
 
-## Expanding the ESLint configuration
+- 🚀 配置驱动，快速开发
+- 📦 丰富的表单项类型
+- 🎨 灵活的布局方式（Grid、Tabs、Steps等）
+- 🔗 强大的联动能力
+- 🛠 支持自定义组件
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 安装
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
+```bash
+npm install reformx
+```
+
+## 基础使用
+
+```tsx
+import { DynamicForm } from 'reformx';
+
+const config = {
+  groups: [
+    {
+      layout: "custom",
+      items: [
+        {
+          type: "input",
+          name: "username",
+          label: "用户名",
+          rules: [{ required: true, message: "请输入用户名" }]
+        },
+        {
+          type: "password",
+          name: "password",
+          label: "密码",
+          rules: [{ required: true, message: "请输入密码" }]
+        }
+      ]
+    }
+  ]
+};
+
+export default function BasicForm() {
+  const handleSubmit = (values) => {
+    console.log('表单数据:', values);
+  };
+
+  return <DynamicForm config={config} onSubmit={handleSubmit} />;
+}
+```
+
+## 布局类型
+
+### 网格布局
+```tsx
+{
+  layout: "grid",
+  columns: 3,  // 3列布局
+  items: [...]
+}
+```
+
+### 标签页布局
+```tsx
+{
+  layout: "tabs",
+  tabs: [
+    {
+      title: "基本信息",
+      items: [...]
     },
-  },
-})
+    {
+      title: "扩展信息",
+      items: [...]
+    }
+  ]
+}
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
+### 步骤表单
+```tsx
+{
+  layout: "step",
+  step: {
+    title: "第一步",
+    nextText: "下一步",
+    prevText: "上一步"
   },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+  items: [...]
+}
 ```
+
+## 表单联动
+
+### 显示隐藏联动
+```tsx
+{
+  type: "input",
+  name: "other",
+  label: "其他选项",
+  visible: (values) => values.type === 'other',
+  visibleDeps: ["type"]
+}
+```
+
+### 选项联动
+```tsx
+{
+  type: "select",
+  name: "city",
+  label: "城市",
+  dependencies: ["province"],
+  fetchOptions: async ({ values }) => {
+    const cities = await fetchCitiesByProvince(values.province);
+    return cities;
+  }
+}
+```
+
+## 自定义组件
+
+```tsx
+const MyCustomComponent = ({ form, item }) => {
+  return (
+    <div>
+      <input
+        value={form.getFieldValue(item.name)}
+        onChange={(e) => form.setFieldValue(item.name, e.target.value)}
+      />
+    </div>
+  );
+};
+
+const config = {
+  customTypes: {
+    myCustom: {
+      formItem: true,
+      render: MyCustomComponent
+    }
+  },
+  groups: [
+    {
+      layout: "custom",
+      items: [
+        {
+          type: "myCustom",
+          name: "customField",
+          label: "自定义组件"
+        }
+      ]
+    }
+  ]
+};
+```
+
+## API
+
+### DynamicForm Props
+
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| config | 表单配置 | IFormConfig | - |
+| onSubmit | 提交回调 | (values: any) => void | - |
+| form | Form 实例 | FormInstance | - |
+| initialValues | 初始值 | object | - |
+| customTypes | 自定义组件类型 | object | - |
+| footterStyle | 底部样式 | CSSProperties | - |
+| isReset | 是否显示重置按钮 | boolean | false |
+
+### FormConfig
+
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| groups | 表单分组配置 | FormGroupConfig[] | - |
+| submitText | 提交按钮文本 | string | '提交' |
+| stepStyle | 步骤条样式 | CSSProperties | - |
+
+## License
+

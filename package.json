@@ -1,12 +1,12 @@
 {
   "name": "reformx",
-  "private": true,
   "version": "0.0.1",
   "type": "module",
   "description": "一个基于 React 和 Ant Design 的动态表单解决方案",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
+  "homepage": "https://reformx.xujingyichang.top",
   "files": [
     "dist"
   ],
@@ -18,6 +18,10 @@
   ],
   "author": "wtechtec",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wtechtec/reformx.git"
+  },
   "scripts": {
     "dev": "vite",
     "build:web": "tsc -b && vite build",
